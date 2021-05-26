@@ -1,0 +1,35 @@
+@font-face {
+  font-family: lobster;
+  src: url(static/fonts/Lobster_1.3.otf);
+}
+@font-face {
+  font-family: san;
+  src: url(static/fonts/Technique+Sans.otf);
+}
+* {
+  box-sizing: border-box;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.container {
+  padding: 5em;
+  height: auto;
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+}
+.landing h1 {
+  font-family: lobster;
+  letter-spacing: 8px;
+  font-weight: 200;
+  font-size: 4em;
+}
+.landing p {
+  font-family: san;
+  padding: 2em 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: oblique;
+}

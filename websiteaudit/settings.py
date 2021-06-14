@@ -55,7 +55,7 @@ ROOT_URLCONF = 'websiteaudit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,33 +71,32 @@ TEMPLATES = [
 WSGI_APPLICATION = 'websiteaudit.wsgi.application'
 
 
-
 # MongoDB connection using Djongo ORM
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'websiteaudit',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'websiteaudit',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
                 'host': 'mongodb+srv://omkumar01:p7pl68I0a9ZOjY52@sitedata.arcj2.mongodb.net/websiteaudit?retryWrites=true&w=majority',
                 'port': 27017,
                 'username': 'omkumar01',
                 'password': 'p7pl68I0a9ZOjY52',
                 'authSource': 'websiteaudit',
                 'authMechanism': 'SCRAM-SHA-1'
+        },
+        'LOGGING': {
+            'version': 1,
+            'loggers': {
+                'djongo': {
+                    'level': 'DEBUG',
+                    'propagate': False,
+                }
             },
-            'LOGGING': {
-                'version': 1,
-                'loggers': {
-                    'djongo': {
-                        'level': 'DEBUG',
-                        'propagate': False,                        
-                    }
-                },
-             },
-        }
+        },
     }
+}
 
 
 # Password validation
@@ -141,3 +140,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

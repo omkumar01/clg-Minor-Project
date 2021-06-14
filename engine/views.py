@@ -48,9 +48,13 @@ class Register(LoginRegister):
         username = request.POST['email']
         password = request.POST['password']
 
-        add_user = User.objects.create_user(
-            first_name=name, username=username, email=email, password=password, is_superuser=False)
-        add_user.save()
+        try:
+            add_user = User.objects.create_user(
+                first_name=name, username=username, email=email, password=password, is_superuser=False)
+            add_user.save()
+        except:
+            return redirect("login")
+
         return HttpResponse("success")
 
 

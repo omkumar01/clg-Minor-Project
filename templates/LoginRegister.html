@@ -11,7 +11,7 @@
   <body>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="#">
+        <form id="reg-form" action="register" method="POST">
           <h1>Create Account</h1>
           <div class="social-container">
             <!-- <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -19,6 +19,7 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
           </div>
           <!-- <span>or use your email for registration</span> -->
+          {% csrf_token %}
           <input type="text" placeholder="Name" name="name" />
           <input type="email" placeholder="Email" name="email" />
           <input
@@ -28,7 +29,7 @@
             name="password"
           />
           <input type="password" id="cpass" placeholder="Confirm password" />
-          <button onclick="">Sign Up</button>
+          <button type="button" onclick="my_function()">Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">
@@ -65,7 +66,20 @@
         </div>
       </div>
     </div>
-
+    <script>
+      function my_function() {
+        if ($("#pass").val() == $("#cpass").val()) {
+          $("#reg-form").submit();
+        } else {
+          alert("password don't match");
+        }
+      }
+    </script>
     <script src="{% static 'js/LoginRegister.js' %}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from django.contrib.auth import REDIRECT_FIELD_NAME
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -142,3 +144,7 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+LOGIN_URL = '/LoginRegister'
+LOGOUT_REDIRECT_URL = '/LoginRegister'
+REDIRECT_FIELD_NAME = '/'

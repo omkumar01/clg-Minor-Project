@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static '/css/input-bar.css' %}" />
     <link rel="stylesheet" href="{% static '/css/index.css' %}" />
     <link rel="stylesheet" href="{% static '/css/result.css' %}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link
       href="//fonts.googleapis.com/css?family=Roboto:100,400,300"
       rel="stylesheet"
@@ -25,31 +26,12 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="landing">
-        <h1>Website audit tool</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum,
-          debitis tenetur. Ea cupiditate voluptatum eos quasi dolore distinctio
-          aspernatur consequatur atque quisquam.
-        </p>
-      </div>
-      <div class="post-form">
-        <form method="POST" action="/result" class="search-bar">
-          {% csrf_token %}
-          <input type="url" name="link" required />
-          <button class="search-btn" type="submit">
-            <span>Audit</span>
-          </button>
-        </form>
-      </div>
-    </div>
-    {% if data.link %}
+    {% if data %}
     <div class="quiz-window">
       <div class="quiz-window-header">
         <div class="quiz-window-title">
           <h3>
-            {{ data.link }} <br />
+            {{ link }} <br />
             Website Score is 56&#47;100
           </h3>
         </div>
@@ -130,10 +112,29 @@
           </ul>
         </div>
         <div class="guiz-awards-buttons">
-          <button class="guiz-awards-but-back">
-            <i class="fa fa-angle-left"></i> Back
-          </button>
+          <a href="/">Back</a>
         </div>
+      </div>
+    </div>
+
+    {% else %}
+    <div class="container">
+      <div class="landing">
+        <h1>Website audit tool</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum,
+          debitis tenetur. Ea cupiditate voluptatum eos quasi dolore distinctio
+          aspernatur consequatur atque quisquam.
+        </p>
+      </div>
+      <div class="post-form">
+        <form method="POST" action="/result" class="search-bar">
+          {% csrf_token %}
+          <input type="url" name="link" required />
+          <button class="search-btn" type="submit">
+            <span>Audit</span>
+          </button>
+        </form>
       </div>
     </div>
     {% endif %}

@@ -1,11 +1,3 @@
-@font-face {
-  font-family: lobster;
-  src: url(static/fonts/Lobster_1.3.otf);
-}
-@font-face {
-  font-family: san;
-  src: url(static/fonts/Technique+Sans.otf);
-}
 * {
   box-sizing: border-box;
   background: transparent;

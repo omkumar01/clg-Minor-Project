@@ -5,7 +5,7 @@ from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-
+from .scrapbot import onPage
 
 class LoginRegister(View):
 
@@ -53,6 +53,7 @@ class Register(LoginRegister):
                 first_name=name, username=username, email=email, password=password, is_superuser=False)
             add_user.save()
         except:
+            print("user registration failed")
             return redirect("login")
 
         return HttpResponse("success")
@@ -72,16 +73,9 @@ class ResultsPage(LoginRequiredMixin, View):
     """ This Class will be making a Request to Generate Data and render Result Template """
 
     def post(self, request):
-
+        content= {}
         link = request.POST['link']
-        print(link)
-        data = Url.objects.filter(input_link=link)
-        print(data)
-        if data == None:
-            db = Url(input_link=link)
-            db.save()
-        content = {}
-        content['data'] = {
-            'link': link,
-        }
+        content['data'] = onPage(link)
+        content['link'] = link
+
         return render(request, 'index.html', content)

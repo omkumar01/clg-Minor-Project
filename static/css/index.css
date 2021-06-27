@@ -1,21 +1,23 @@
 @font-face {
   font-family: lobster;
-  src: url(static/fonts/Lobster_1.3.otf);
+  src: url("Lobster_1.3.otf");
 }
 @font-face {
   font-family: san;
-  src: url(static/fonts/Technique+Sans.otf);
+  src: url("Technique+Sans.otf");
 }
 * {
   box-sizing: border-box;
-  background: transparent;
   padding: 0;
   border: 0;
   margin: 0;
 }
+.navbar {
+  padding: 0.5em;
+}
 .container {
-  padding: 5em;
-  height: auto;
+  padding-top: 5em;
+  height: 90vh;
   width: 100%;
   background-color: whitesmoke;
   text-align: center;

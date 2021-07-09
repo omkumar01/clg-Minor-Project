@@ -32,6 +32,7 @@
           <button type="button" onclick="my_function()">Sign Up</button>
         </form>
       </div>
+      {{message}}
       <div class="form-container sign-in-container">
         <form action="LoginRegister" method="POST">
           <h1>Login</h1>
@@ -41,10 +42,12 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
           </div>
           <!-- <span>or use your account</span> -->
-          {% csrf_token %}
+          {% csrf_token %} {% if not login %}
+          <div class="error"><p>{{message}}</p></div>
+          {% endif %}
           <input type="text" placeholder="Username" name="username" />
           <input type="password" placeholder="Password" name="password" />
-          <a href="#">Forgot your password?</a>
+          <a href="/ChangePassword">Forgot your password?</a>
           <button type="submit">Sign In</button>
         </form>
       </div>
@@ -75,6 +78,7 @@
         }
       }
     </script>
+
     <script src="{% static 'js/LoginRegister.js' %}"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.slim.min.js"

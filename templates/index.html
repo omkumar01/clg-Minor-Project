@@ -39,77 +39,20 @@
       <div class="quiz-window-body">
         <div class="gui-window-awards">
           <ul class="guiz-awards-row guiz-awards-header">
-            <li class="guiz-awards-header-star">&nbsp;</li>
-            <li class="guiz-awards-header-title">RESULTS</li>
+            <li class="guiz-awards-header-title">PARAMETER</li>
             <li class="guiz-awards-header-track">SCORE</li>
             <li class="guiz-awards-header-time">PRIORITY</li>
           </ul>
+          {% for i, j in data.items %}
           <ul class="guiz-awards-row guiz-awards-row-even">
-            <li class="guiz-awards-star">
-              <span class="star goldstar"></span>
-            </li>
             <li class="guiz-awards-title">
-              Test1
-              <div class="guiz-awards-subtitle">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias expedita nesciunt laudantium aspernatur cum doloremque
-                eaque recusandae pariatur adipisci dolore vero facere, ut nulla
-                deserunt ab rerum et illo autem.
-              </div>
+              {{i}}
+              <div class="guiz-awards-subtitle">{{j}}</div>
             </li>
             <li class="guiz-awards-track">8</li>
             <li class="guiz-awards-time">10</li>
           </ul>
-          <ul class="guiz-awards-row">
-            <li class="guiz-awards-star">
-              <span class="star silverstar"></span>
-            </li>
-            <li class="guiz-awards-title">
-              Silver Star
-              <div class="guiz-awards-subtitle">80-90% correct answers</div>
-            </li>
-            <li class="guiz-awards-track"><span class="null">0</span></li>
-            <li class="guiz-awards-time"><span class="null">0</span></li>
-          </ul>
-          <ul class="guiz-awards-row guiz-awards-row-even">
-            <li class="guiz-awards-star">
-              <span class="star bronzestar"></span>
-            </li>
-            <li class="guiz-awards-title">
-              Bronze Star
-              <div class="guiz-awards-subtitle">70-80% correct answers</div>
-            </li>
-            <li class="guiz-awards-track">2</li>
-            <li class="guiz-awards-time">2</li>
-          </ul>
-          <ul class="guiz-awards-row">
-            <li class="guiz-awards-star">
-              <span class="star rhodiumstar"></span>
-            </li>
-            <li class="guiz-awards-title">
-              Rhodium Star
-              <div class="guiz-awards-subtitle">60-70% correct answers</div>
-            </li>
-            <li class="guiz-awards-track"><span class="null">0</span></li>
-            <li class="guiz-awards-time"><span class="null">0</span></li>
-          </ul>
-          <ul class="guiz-awards-row guiz-awards-row-even">
-            <li class="guiz-awards-star">
-              <span class="star platinumstar"></span>
-            </li>
-            <li class="guiz-awards-title">
-              Platinum Star
-              <div class="guiz-awards-subtitle">50-60% correct answers</div>
-            </li>
-            <li class="guiz-awards-track">2</li>
-            <li class="guiz-awards-time">2</li>
-          </ul>
-          <ul class="guiz-awards-row">
-            <li class="guiz-awards-star"><span class="star"></span></li>
-            <li class="guiz-awards-title">Star</li>
-            <li class="guiz-awards-track"><span class="null">0</span></li>
-            <li class="guiz-awards-time"><span class="null">0</span></li>
-          </ul>
+          {% endfor %}
         </div>
         <div class="guiz-awards-buttons">
           <a href="/">Back</a>

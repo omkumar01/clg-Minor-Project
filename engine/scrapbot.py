@@ -2,8 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class Bot:        
-
+class Bot:
     def headerCount(self, page):
         headcount = {}
         h1Tag = page.find_all("h1")
@@ -38,13 +37,11 @@ class Bot:
 
         return headcount
 
-
     def titleText(self, page):
         if page.find("title"):
             return page.find("title").get_text()
         else:
             return "no title tag found"
-
 
     def metaTags(self, page):
         meta_data = {}
@@ -55,31 +52,33 @@ class Bot:
                 prop = tag.get("property")
                 if name == "viewport":
                     meta_data["viewport"] = tag.get("content")
+                # else:
+                #     meta_data["viewport"] = ""
                 if name == "keywords":
-                    meta_data["keywards"] = tag.get("content")
+                    meta_data["keywords"] = tag.get("content")
                 if name == "description":
                     meta_data["description"] = tag.get("content")
                 if name == "robots":
                     meta_data["robots"] = tag.get("content")
                 if name == "twitter:card":
-                    meta_data["twitter:card"] = tag.get("content")
+                    meta_data["twitter_card"] = tag.get("content")
                 if name == "twitter:title":
-                    meta_data["twitter:title"] = tag.get("content")
+                    meta_data["twitter_title"] = tag.get("content")
                 if name == "twitter:description":
-                    meta_data["twitter:description"] = tag.get("content")
+                    meta_data["twitter_description"] = tag.get("content")
                 if name == "twitter:image":
-                    meta_data["twitter:image"] = tag.get("content")
+                    meta_data["twitter_image"] = tag.get("content")
 
                 if prop == "og:type":
-                    meta_data["og:type"] = tag.get("content")
+                    meta_data["og_type"] = tag.get("content")
                 if prop == "og:image":
-                    meta_data["og:image"] = tag.get("content")
+                    meta_data["og_image"] = tag.get("content")
                 if prop == "og:url":
-                    meta_data["og:url"] = tag.get("content")
+                    meta_data["og_url"] = tag.get("content")
                 if prop == "og:title":
-                    meta_data["og:title"] = tag.get("content")
+                    meta_data["og_title"] = tag.get("content")
                 if prop == "og:description":
-                    meta_data["og:description"] = tag.get("content")
+                    meta_data["og_description"] = tag.get("content")
 
                 if tag.get("charset"):
                     meta_data["charset"] = tag.get("charset")
@@ -87,8 +86,22 @@ class Bot:
             return meta_data
 
         else:
-            return 0
-
+            meta_data["viewport"] = ""
+            meta_data["keywords"] = ""
+            meta_data["description"] = ""
+            meta_data["robots"] = ""
+            meta_data["twitter_card"] = ""
+            meta_data["twitter_title"] = ""
+            meta_data["twitter_description"] = ""
+            meta_data["twitter_image"] = ""
+            meta_data["og_type"] = ""
+            meta_data["og_image"] = ""
+            meta_data["og_url"] = ""
+            meta_data["og_title"] = ""
+            meta_data["og_description"] = ""
+            meta_data["charset"] = ""
+            print("metadata = ", meta_data)
+            return meta_data
 
     def checkSchema(self, page):
         if page.find_all("script"):
@@ -99,7 +112,6 @@ class Bot:
 
         else:
             return False
-
 
     def getLang(self, page):
         lang_info = {}
@@ -113,7 +125,6 @@ class Bot:
                 lang_info["lang_exist"] = True
                 lang_info["content"] = tag.get("lang")
                 return lang_info
-
 
     def imgAlt(self, page):
         img_data = {}
@@ -141,18 +152,19 @@ class Bot:
             return img_data
 
 
-def onPage(url):  
+def onPage(url):
     html = requests.get(url)
     page = BeautifulSoup(html.content, "html.parser")
     dict = {}
     obj = Bot()
     dict.update(obj.headerCount(page))
-    dict['page_title'] = obj.titleText(page)
+    dict["page_title"] = obj.titleText(page)
     dict.update(obj.metaTags(page))
-    dict['schema_exist'] = obj.checkSchema(page)
+    dict["schema_exist"] = obj.checkSchema(page)
     dict.update(obj.getLang(page))
     dict.update(obj.imgAlt(page))
     return dict
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     onPage("https://heapoftech.live")

@@ -109,10 +109,10 @@ class ResultsPage(LoginRequiredMixin, View):
         data = onPage(link)
         content["data"] = data
 
-        db = Url()
-        db.input_link = link
-        db.onpagedata = data
-        db.save()
+        # db = Url()
+        # db.input_link = link
+        # db.onpagedata = data
+        # db.save()
 
         # for i, j in data.items():
         #     print(i)
